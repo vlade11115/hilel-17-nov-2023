@@ -49,10 +49,6 @@ def activate(request, user_signed):
     return redirect("login")
 
 
-def password_reset(request):
-    return render(request, "password_reset.html")
-
-
 def index(request):
     return render(request, "index.html", {"user": request.user})
 
