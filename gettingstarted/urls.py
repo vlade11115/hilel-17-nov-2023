@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordResetConfirmView
 # from django.contrib import admin
 from django.urls import path
 
@@ -27,7 +27,11 @@ urlpatterns = [
     path("login/", LoginView.as_view(), name="login"),
     path("logout/", hello.views.logout_view, name="logout"),
     path("users/", hello.views.list_users, name="users"),
-    # Uncomment this and the entry in `INSTALLED_APPS` if you wish to use the Django admin feature:
-    # https://docs.djangoproject.com/en/4.2/ref/contrib/admin/
-    # path("admin/", admin.site.urls),
+    path("activate/<user_signed>", hello.views.activate, name="activate"),
+    path("forgot_password/", hello.views.ResetPasswordView.as_view(), name="password_reset"),
+    path(
+        "forgot_password/confirm/<uidb64>/<token>/",
+        PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html', success_url='/login/'),
+        name="password_reset_confirm",
+    )
 ]
