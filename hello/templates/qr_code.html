@@ -1,0 +1,9 @@
+Generate your QR Code!
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit">
+</form>
+{% if qr %}
+    <img src="{{ qr.qr_code.url }}">
+{% endif %}
