@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import EmailField
+from django.forms import EmailField, Form, CharField
 
 
 class UserCreationFormWithEmail(UserCreationForm):
@@ -16,3 +16,7 @@ class UserCreationFormWithEmail(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class QRInput(Form):
+    text = CharField(max_length=200)

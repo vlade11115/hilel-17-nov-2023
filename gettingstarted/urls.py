@@ -23,6 +23,7 @@ import hello.views
 
 urlpatterns = [
     path("", hello.views.index, name="index"),
+    path("qr/", hello.views.generate_qr_code, name="generate_qr_code"),
     path("db/", hello.views.db, name="db"),
     path("register/", hello.views.register, name="register"),
     path("login/", LoginView.as_view(), name="login"),

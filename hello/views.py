@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -8,8 +10,9 @@ from django.core.signing import Signer, BadSignature
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from .forms import UserCreationFormWithEmail
-from .models import Greeting
+from .forms import UserCreationFormWithEmail, QRInput
+from .models import Greeting, QRCode
+from .qr_generator import generate_qr
 
 
 # Create your views here.
@@ -70,6 +73,18 @@ def register(request):
 def logout_view(request):
     logout(request)
     return redirect("login")
+
+
+def generate_qr_code(request):
+    form = QRInput(request.POST)
+    if request.method == "GET":
+        return render(request, "qr_code.html", {"form": form, "qr": None})
+    if form.is_valid():
+        text = form.cleaned_data["text"]
+        qr_image = generate_qr(text)
+        qr = QRCode.objects.create(text=text)
+        qr.qr_code.save(uuid.uuid4().hex, qr_image)
+        return render(request, "qr_code.html", {"form": form, "qr": qr})
 
 
 def db(request):
