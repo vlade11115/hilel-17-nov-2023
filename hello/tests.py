@@ -10,9 +10,7 @@ from django.test import TestCase
 class ExampleTest(TestCase):
     def test_index_page(self):
         response = self.client.get("/")
-        self.assertContains(
-            response, "Getting Started with Python on Heroku", status_code=200
-        )
+        self.assertContains(response, "Getting Started with Python on Heroku", status_code=200)
 
     def test_db_page(self):
         # Each time the page is requested, the number of recorded greetings increases.
