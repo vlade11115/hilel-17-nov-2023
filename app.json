@@ -20,10 +20,7 @@
     "review": {
       "addons": [
         "heroku-postgresql:mini"
-      ],
-      "scripts": {
-        "postdeploy": "pytest tests/integration"
-      }
+      ]
     },
     "test": {
       "scripts": {
