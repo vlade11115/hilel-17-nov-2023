@@ -22,7 +22,7 @@
         "heroku-postgresql:mini"
       ],
       "scripts": {
-        "test": "pytest tests/integration"
+        "postdeploy": "pytest tests/integration"
       }
     },
     "test": {
