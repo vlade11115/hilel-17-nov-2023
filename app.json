@@ -23,11 +23,11 @@
       ],
       "scripts": {
         "test": "pytest tests/integration"
-      },
-      "test": {
-        "scripts": {
-          "test": "pytest tests/unit"
-        }
+      }
+    },
+    "test": {
+      "scripts": {
+        "test": "pytest tests/unit"
       }
     }
   }
