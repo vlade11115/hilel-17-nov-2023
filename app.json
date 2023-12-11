@@ -3,9 +3,13 @@
   "description": "A barebones Python app, which can easily be deployed to Heroku.",
   "image": "heroku/python",
   "repository": "https://github.com/heroku/python-getting-started",
-  "keywords": ["python", "django"],
-    "addons": ["heroku-postgresql:mini"],
-
+  "keywords": [
+    "python",
+    "django"
+  ],
+  "addons": [
+    "heroku-postgresql:mini"
+  ],
   "env": {
     "DJANGO_SECRET_KEY": {
       "description": "The secret key for the Django application.",
@@ -14,13 +18,16 @@
   },
   "environments": {
     "review": {
-      "addons": ["heroku-postgresql:mini"],
+      "addons": [
+        "heroku-postgresql:mini"
+      ],
       "scripts": {
         "test": "pytest tests/integration"
       },
-    "test": {
-      "scripts": {
-        "test": "pytest tests/unit"
+      "test": {
+        "scripts": {
+          "test": "pytest tests/unit"
+        }
       }
     }
   }
