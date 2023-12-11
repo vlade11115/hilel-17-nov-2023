@@ -14,11 +14,13 @@
   },
   "environments": {
     "review": {
-      "addons": ["heroku-postgresql:mini"]
+      "addons": ["heroku-postgresql:mini"],
+      "scripts": {
+        "test": "pytest tests/integration"
       },
     "test": {
       "scripts": {
-        "test": "pytest"
+        "test": "pytest tests/unit"
       }
     }
   }
